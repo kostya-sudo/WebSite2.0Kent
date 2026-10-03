@@ -103,7 +103,8 @@ nav{
   font-size:14px;
   font-weight:600;
   color:#bbb;
-  animation:slide-in-left .8s ease-out
+  animation:slide-in-left .8s ease-out;
+  align-items:center
 }
 
 .links a{
@@ -390,6 +391,104 @@ section:nth-child(even){
   font-weight:300
 }
 
+/* Links Section */
+.links-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:32px;
+  margin-top:50px
+}
+
+.link-card{
+  background:rgba(255,181,46,.08);
+  border:2px solid rgba(255,181,46,.2);
+  border-radius:20px;
+  padding:40px 32px;
+  transition:all .4s cubic-bezier(.4,.0,.2,1);
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  text-align:center;
+  cursor:pointer
+}
+
+.link-card:before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,181,46,.15),transparent);
+  transition:left .6s ease
+}
+
+.link-card:hover:before{
+  left:100%
+}
+
+.link-card:hover{
+  background:rgba(255,181,46,.16);
+  border-color:rgba(255,181,46,.5);
+  transform:translateY(-12px);
+  box-shadow:0 30px 60px rgba(255,181,46,.2)
+}
+
+.link-card .icon{
+  font-size:64px;
+  margin-bottom:20px;
+  display:block;
+  position:relative;
+  z-index:2
+}
+
+.link-card h3{
+  font-size:24px;
+  margin:16px 0 12px;
+  color:#fff;
+  font-weight:800;
+  position:relative;
+  z-index:2
+}
+
+.link-card .status{
+  color:#999;
+  font-size:13px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  margin-bottom:16px;
+  position:relative;
+  z-index:2
+}
+
+.link-card p{
+  color:#bbb;
+  line-height:1.6;
+  font-size:14px;
+  margin-bottom:24px;
+  position:relative;
+  z-index:2;
+  flex-grow:1
+}
+
+.link-card .btn{
+  align-self:center;
+  width:auto;
+  position:relative;
+  z-index:2
+}
+
+.link-card.disabled{
+  opacity:.7;
+  pointer-events:none
+}
+
+.link-card.disabled .btn{
+  opacity:.6
+}
+
 /* News Section */
 .news{
   display:grid;
@@ -551,6 +650,8 @@ footer span{
   section{padding:70px 0}
   .grid{gap:16px}
   .card{padding:24px 20px}
+  .links-grid{grid-template-columns:1fr;gap:20px}
+  .link-card{padding:32px 24px}
 }
 </style>
 </head>
@@ -584,6 +685,7 @@ footer span{
       <a href="#features">Возможности</a>
       <a href="#news">Новости</a>
       <a href="#rules">Правила</a>
+      <a href="#links">Ссылки</a>
       <a href="#download">Скачать</a>
     </div>
   </nav>
@@ -719,6 +821,38 @@ footer span{
         <div class="card">
           <h3>03. Честная игра</h3>
           <p>Не используй запрещённые программы и баги для преимущества. Играй честно и справедливо.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Links Section -->
+  <section id="links">
+    <div class="wrap">
+      <div class="eyebrow">🔗 СООБЩЕСТВО</div>
+      <h2 class="section-title">Присоединяйся к нам</h2>
+      <p style="color:#bbb;font-size:16px;margin-bottom:50px;max-width:600px">Найти команду, получать последние новости и общаться с другими игроками. Выбери удобный для тебя канал общения:</p>
+      <div class="links-grid">
+        <div class="link-card">
+          <div class="icon">💬</div>
+          <h3>Форум</h3>
+          <div class="status">Активно</div>
+          <p>Полнофункциональный форум проекта для обсуждения, вопросов и обмена опытом с сообществом.</p>
+          <a href="https://kent-mobile-forum.samp.date" target="_blank" rel="noopener" class="btn dark">Перейти на форум</a>
+        </div>
+        <div class="link-card">
+          <div class="icon">👥</div>
+          <h3>ВКонтакте</h3>
+          <div class="status">Активно</div>
+          <p>Официальное сообщество в ВКонтакте с новостями, событиями и общением с администрацией.</p>
+          <a href="https://vk.ru/kentmobile1" target="_blank" rel="noopener" class="btn dark">Перейти в группу</a>
+        </div>
+        <div class="link-card disabled">
+          <div class="icon">🎮</div>
+          <h3>Discord</h3>
+          <div class="status">В разработке</div>
+          <p>Скоро откроется Discord сервер проекта. Следи за новостями, чтобы не пропустить запуск!</p>
+          <button class="btn dark" disabled style="opacity:.6">Скоро</button>
         </div>
       </div>
     </div>
