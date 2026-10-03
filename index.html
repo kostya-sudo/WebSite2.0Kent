@@ -587,6 +587,246 @@ section:nth-child(even){
   margin-bottom:0
 }
 
+/* Screenshot Gallery */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+  margin-top:50px
+}
+
+.gallery-item{
+  background:rgba(255,181,46,.05);
+  border:1px solid rgba(255,181,46,.15);
+  border-radius:16px;
+  overflow:hidden;
+  transition:all .4s ease;
+  cursor:pointer;
+  position:relative;
+  aspect-ratio:4/3
+}
+
+.gallery-item:hover{
+  border-color:rgba(255,181,46,.5);
+  transform:translateY(-8px);
+  box-shadow:0 20px 40px rgba(255,181,46,.2)
+}
+
+.gallery-item img{
+  width:100%;
+  height:100%;
+  object-fit:cover
+}
+
+.gallery-item-placeholder{
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:64px;
+  background:linear-gradient(135deg,rgba(255,181,46,.1),rgba(255,181,46,.05))
+}
+
+/* Getting Started */
+.steps-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:32px;
+  margin-top:50px
+}
+
+.step-card{
+  background:rgba(255,181,46,.05);
+  border:1px solid rgba(255,181,46,.15);
+  border-radius:16px;
+  padding:40px 28px;
+  transition:all .4s ease;
+  position:relative;
+  text-align:center
+}
+
+.step-card:hover{
+  background:rgba(255,181,46,.12);
+  border-color:rgba(255,181,46,.35);
+  transform:translateY(-8px);
+  box-shadow:0 20px 40px rgba(255,181,46,.15)
+}
+
+.step-number{
+  font-size:48px;
+  font-weight:900;
+  color:#ffb52e;
+  margin-bottom:16px;
+  display:inline-block;
+  width:60px;
+  height:60px;
+  background:rgba(255,181,46,.1);
+  border:2px solid rgba(255,181,46,.3);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center
+}
+
+.step-card h3{
+  font-size:20px;
+  margin:16px 0 12px;
+  color:#fff;
+  font-weight:800
+}
+
+.step-card p{
+  color:#bbb;
+  line-height:1.6;
+  font-size:14px
+}
+
+/* Download Cards */
+.download-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:24px;
+  margin-top:50px
+}
+
+.download-card{
+  background:rgba(255,181,46,.08);
+  border:2px solid rgba(255,181,46,.2);
+  border-radius:16px;
+  padding:32px;
+  transition:all .4s ease;
+  position:relative;
+  overflow:hidden
+}
+
+.download-card:hover{
+  background:rgba(255,181,46,.12);
+  border-color:rgba(255,181,46,.4);
+  transform:translateY(-8px);
+  box-shadow:0 20px 40px rgba(255,181,46,.2)
+}
+
+.download-icon{
+  font-size:48px;
+  margin-bottom:16px;
+  display:block
+}
+
+.download-card h3{
+  font-size:22px;
+  margin:16px 0 8px;
+  color:#fff;
+  font-weight:800
+}
+
+.download-version{
+  color:#ffb52e;
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:8px;
+  text-transform:uppercase;
+  letter-spacing:.5px
+}
+
+.download-size{
+  color:#999;
+  font-size:12px;
+  margin-bottom:16px
+}
+
+.download-badge{
+  display:inline-block;
+  background:rgba(76,175,80,.2);
+  border:1px solid rgba(76,175,80,.5);
+  color:#4caf50;
+  padding:6px 12px;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:700;
+  margin-bottom:16px;
+  text-transform:uppercase;
+  letter-spacing:.5px
+}
+
+.download-card .btn{
+  width:100%;
+  text-align:center;
+  margin-top:16px
+}
+
+/* FAQ */
+.faq-list{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  margin-top:50px
+}
+
+.faq-item{
+  background:rgba(255,181,46,.05);
+  border:1px solid rgba(255,181,46,.15);
+  border-radius:12px;
+  overflow:hidden;
+  transition:all .4s ease
+}
+
+.faq-question{
+  padding:24px;
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(255,181,46,.05);
+  transition:all .3s ease;
+  user-select:none
+}
+
+.faq-question:hover{
+  background:rgba(255,181,46,.12);
+  color:#ffb52e
+}
+
+.faq-item.active .faq-question{
+  background:rgba(255,181,46,.12);
+  border-bottom:1px solid rgba(255,181,46,.2)
+}
+
+.faq-text{
+  font-size:16px;
+  font-weight:600;
+  color:#fff
+}
+
+.faq-toggle{
+  font-size:24px;
+  color:#ffb52e;
+  transition:transform .3s ease
+}
+
+.faq-item.active .faq-toggle{
+  transform:rotate(180deg)
+}
+
+.faq-answer{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .3s ease;
+  padding:0 24px
+}
+
+.faq-item.active .faq-answer{
+  max-height:500px;
+  padding:0 24px 24px
+}
+
+.faq-answer p{
+  color:#bbb;
+  line-height:1.8;
+  font-size:14px;
+  margin:0
+}
+
 /* Footer */
 footer{
   border-top:1px solid rgba(255,181,46,.15);
@@ -639,6 +879,8 @@ footer span{
   .stats{gap:30px}
   .news{grid-template-columns:1fr}
   .news-card:first-child{min-height:auto}
+  .download-grid{grid-template-columns:1fr}
+  .steps-grid{grid-template-columns:1fr}
 }
 
 @media(max-width:600px){
@@ -652,6 +894,9 @@ footer span{
   .card{padding:24px 20px}
   .links-grid{grid-template-columns:1fr;gap:20px}
   .link-card{padding:32px 24px}
+  .gallery{grid-template-columns:1fr}
+  .faq-question{padding:16px}
+  .faq-text{font-size:14px}
 }
 </style>
 </head>
@@ -667,12 +912,12 @@ footer span{
       <b>KENT MOBILE</b>
     </a>
     <div class="links">
-      <a href="#about">О пр��екте</a>
+      <a href="#about">О проекте</a>
       <a href="#features">Возможности</a>
-      <a href="#news">Новости</a>
-      <a href="#rules">Правила</a>
-      <a href="#links">Ссылки</a>
-      <a href="#download">Скачать</a>
+      <a href="#screenshots">Скриншоты</a>
+      <a href="#getting-started">Начать</a>
+      <a href="#faq">FAQ</a>
+      <a href="#download-section">Скачать</a>
     </div>
   </nav>
 </header>
@@ -685,7 +930,7 @@ footer span{
       <h1>KENT <span>MOBILE</span></h1>
       <p>Большой мобильный мир, где ты сам выбираешь путь своего персонажа. Работай, собирай автомобили, создавай бизнес, общайся с друзьями и открывай новые возможности в живом городе.</p>
       <div class="buttons">
-        <a class="btn gold" href="#download">🚀 НАЧАТЬ ИГРУ</a>
+        <a class="btn gold" href="#download-section">🚀 НАЧАТЬ ИГРУ</a>
         <a class="btn dark" href="#about">УЗНАТЬ БОЛЬШЕ</a>
       </div>
       <div class="stats">
@@ -770,6 +1015,166 @@ footer span{
     </div>
   </section>
 
+  <!-- Screenshots Section -->
+  <section id="screenshots">
+    <div class="wrap">
+      <div class="eyebrow">📸 ГАЛЕРЕЯ</div>
+      <h2 class="section-title">Посмотри, как выглядит игра</h2>
+      <div class="gallery">
+        <div class="gallery-item">
+          <div class="gallery-item-placeholder">📱</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-item-placeholder">🏙️</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-item-placeholder">🚗</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-item-placeholder">👥</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-item-placeholder">💰</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-item-placeholder">🌃</div>
+        </div>
+      </div>
+      <p style="color:#999;font-size:14px;margin-top:32px;text-align:center">Загрузи собственные скриншоты в папку assets/screenshots/ и обнови пути в HTML</p>
+    </div>
+  </section>
+
+  <!-- Getting Started Section -->
+  <section id="getting-started">
+    <div class="wrap">
+      <div class="eyebrow">🚀 БЫСТРЫЙ СТАРТ</div>
+      <h2 class="section-title">Как начать играть</h2>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3>Скачай APK</h3>
+          <p>Загрузи клиент игры на своё Android-устройство. Файл полностью безопасен и проверен.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3>Установи игру</h3>
+          <p>Откройте загруженный файл и следуйте инструкциям установки. Займёт всего пару минут.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3>Создай аккаунт</h3>
+          <p>Зарегистрируйся на сервере, выбери сложность игры и создай своего персонажа.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <h3>Начни играть!</h3>
+          <p>Войди в город и начни свою историю. Тебя ждут приключения, деньги, авто и друзья!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download Section -->
+  <section id="download-section">
+    <div class="wrap">
+      <div class="eyebrow">⬇️ СКАЧАТЬ</div>
+      <h2 class="section-title">Выбери версию для скачивания</h2>
+      <div class="download-grid">
+        <div class="download-card">
+          <div class="download-icon">📦</div>
+          <h3>Стабильная версия</h3>
+          <div class="download-version">v2.5.1</div>
+          <div class="download-size">Размер: 285 МБ</div>
+          <div class="download-badge">✓ Безопасно</div>
+          <p style="color:#bbb;font-size:14px;margin-bottom:16px;line-height:1.6">Последняя стабильная версия с полной поддержкой всех функций. Рекомендуется для всех игроков.</p>
+          <a href="kent-mobile-v2.5.1.apk" class="btn gold" download>⬇️ Скачать APK</a>
+        </div>
+        <div class="download-card">
+          <div class="download-icon">🆕</div>
+          <h3>Бета версия</h3>
+          <div class="download-version">v2.6 Beta</div>
+          <div class="download-size">Размер: 298 МБ</div>
+          <div class="download-badge" style="background:rgba(255,152,0,.2);border-color:rgba(255,152,0,.5);color:#ff9800">⚡ Новое</div>
+          <p style="color:#bbb;font-size:14px;margin-bottom:16px;line-height:1.6">Попробуй новые возможности раньше всех. Могут встречаться небольшие баги.</p>
+          <a href="kent-mobile-v2.6-beta.apk" class="btn dark" download>⬇️ Скачать Beta</a>
+        </div>
+        <div class="download-card">
+          <div class="download-icon">⚙️</div>
+          <h3>Для ПК (Эмулятор)</h3>
+          <div class="download-version">v2.5.1</div>
+          <div class="download-size">Размер: 520 МБ</div>
+          <div class="download-badge">💻 Desktop</div>
+          <p style="color:#bbb;font-size:14px;margin-bottom:16px;line-height:1.6">Версия для эмулятора на компьютере. Используй BlueStacks или NOX App Player.</p>
+          <a href="kent-mobile-v2.5.1-pc.exe" class="btn dark" download>⬇️ Скачать для ПК</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="eyebrow">❓ ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ</div>
+      <h2 class="section-title">Ответы на вопросы</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="faq-text">Нужен ли VPN для игры?</span>
+            <span class="faq-toggle">⌄</span>
+          </div>
+          <div class="faq-answer">
+            <p>Нет, VPN не требуется. KENT MOBILE доступна без ограничений во всех странах. Однако, если у тебя медленное интернет-соединение, VPN может помочь оптимизировать пинг.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="faq-text">Какой минимальный уровень Android?</span>
+            <span class="faq-toggle">⌄</span>
+          </div>
+          <div class="faq-answer">
+            <p>Игра работает на Android 8.0 и выше. Рекомендуется Android 10+ для оптимальной производительности. Убедись, что у тебя есть минимум 300 МБ свободного места.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="faq-text">Как восстановить аккаунт, если я потеряю пароль?</span>
+            <span class="faq-toggle">⌄</span>
+          </div>
+          <div class="faq-answer">
+            <p>Перейди в меню входа и нажми "Забыл пароль". Следуй инструкциям подтверждения по почте. Убедись, что используешь тот же email, который указал при регистрации.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="faq-text">Есть ли официальная поддержка Discord?</span>
+            <span class="faq-toggle">⌄</span>
+          </div>
+          <div class="faq-answer">
+            <p>Да! Discord сервер KENT MOBILE уже открыт для игроков. Там можно найти помощь администрации, участвовать в событиях и общаться с сообществом. Ссылка во вкладке "Сообщество".</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="faq-text">Возможны ли покупки внутри игры?</span>
+            <span class="faq-toggle">⌄</span>
+          </div>
+          <div class="faq-answer">
+            <p>KENT MOBILE полностью free-to-play. Все прогрессы и вещи можно получить, играя. Покупки опциональны и используются только для косметики или ускорения прогресса.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="faq-text">Как связаться с администрацией при возникновении проблем?</span>
+            <span class="faq-toggle">⌄</span>
+          </div>
+          <div class="faq-answer">
+            <p>Свяжись с нами несколькими способами: через форум (kent-mobile-forum.samp.date), группу ВКонтакте (vk.ru/kentmobile1) или Discord. Администрация ответит в течение 24 часов.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- News Section -->
   <section id="news">
     <div class="wrap">
@@ -843,20 +1248,6 @@ footer span{
       </div>
     </div>
   </section>
-
-  <!-- Download Section -->
-  <section id="download">
-    <div class="wrap">
-      <div class="banner">
-        <div class="banner-content">
-          <div class="eyebrow">🎮 ГОТОВ НАЧАТЬ?</div>
-          <h2 class="section-title" style="margin-bottom:12px">Присоединяйся к KENT MOBILE</h2>
-          <p>Скачай клиент игры для Android и начни свою историю в виртуальном городе. Тебя ждут приключения!</p>
-        </div>
-        <a class="btn gold" href="kent-mobile.apk" download>⬇️ Скачать APK</a>
-      </div>
-    </div>
-  </section>
 </main>
 
 <!-- Footer -->
@@ -871,6 +1262,16 @@ footer span{
     </div>
   </div>
 </footer>
+
+<script>
+// FAQ Toggle
+document.querySelectorAll('.faq-question').forEach(question => {
+  question.addEventListener('click', function() {
+    const faqItem = this.parentElement;
+    faqItem.classList.toggle('active');
+  });
+});
+</script>
 
 </body>
 </html>
