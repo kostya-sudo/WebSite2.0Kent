@@ -6,85 +6,751 @@
 <title>KENT MOBILE — официальный сайт</title>
 <meta name="description" content="KENT MOBILE — мобильная RP-игра">
 <style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#050505;color:#fff;font-family:Arial,Helvetica,sans-serif}
-a{text-decoration:none;color:inherit}.wrap{width:min(1180px,calc(100% - 32px));margin:auto}
-header{position:fixed;z-index:10;top:0;left:0;right:0;background:rgba(5,5,5,.78);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,181,46,.18)}
-nav{height:72px;display:flex;align-items:center;justify-content:space-between}.logo{display:flex;align-items:center;gap:10px;font-weight:900}.logo img{width:45px;height:45px;border-radius:50%}.logo b{letter-spacing:.06em}
-.links{display:flex;gap:25px;font-size:14px;font-weight:700;color:#bbb}.links a:hover{color:#ffb52e}
-.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:linear-gradient(90deg,rgba(0,0,0,.94),rgba(0,0,0,.62),rgba(0,0,0,.3)),url("assets/hero-backdrop.svg") center/cover no-repeat}
-.hero:after{content:"";position:absolute;left:0;right:0;bottom:0;height:220px;background:linear-gradient(transparent,#050505)}
-.hero-content{position:relative;z-index:1;max-width:720px;padding-top:70px}.tag{display:inline-block;border:1px solid rgba(255,181,46,.35);background:rgba(255,181,46,.08);padding:8px 13px;border-radius:999px;font-size:12px;font-weight:900;letter-spacing:2px;text-transform:uppercase}
-h1{font-size:clamp(52px,9vw,96px);line-height:.9;margin:22px 0;letter-spacing:-4px}h1 span{color:#ffb52e}
-.hero p{font-size:19px;color:#c2c2c2;line-height:1.65;max-width:650px}.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.btn{padding:14px 23px;border-radius:10px;font-weight:800;display:inline-block}.gold{background:linear-gradient(135deg,#ffd36a,#e88c0b);color:#090909}.dark{border:1px solid #333;background:#101010;color:#fff}
-.stats{display:flex;gap:35px;margin-top:45px}.stats strong{font-size:25px}.stats small{display:block;color:#888;margin-top:3px}
-section{padding:90px 0}.eyebrow{color:#ffb52e;font-size:12px;font-weight:900;letter-spacing:2px;text-transform:uppercase}.title{font-size:40px;margin:8px 0 35px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.card{padding:27px;background:linear-gradient(145deg,#121212,#090909);border:1px solid #222;border-radius:18px}.icon{font-size:30px}.card h3{margin:15px 0 8px}.card p{color:#999;line-height:1.65;margin:0}
-.news{display:grid;grid-template-columns:2fr 1fr;gap:18px}.news .card:first-child{min-height:260px}.date{color:#ffb52e;font-size:12px;font-weight:800}
-.banner{border:1px solid rgba(255,181,46,.22);border-radius:22px;padding:40px;background:linear-gradient(110deg,rgba(255,181,46,.1),rgba(255,181,46,.015));display:flex;justify-content:space-between;align-items:center;gap:20px}
-footer{border-top:1px solid #1e1e1e;padding:30px 0;color:#777}footer span{color:#ffb52e}
-@media(max-width:700px){.links{display:none}.hero{background-position:65% center}.hero-content{padding-top:100px}h1{letter-spacing:-2px}.stats{gap:20px}.grid,.news{grid-template-columns:1fr}.banner{flex-direction:column;align-items:flex-start}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:#0a0a0a;
+  color:#fff;
+  font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+  overflow-x:hidden
+}
+a{text-decoration:none;color:inherit}
+
+/* Background animations */
+@keyframes gradient-shift{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0px)}
+  50%{transform:translateY(-20px)}
+}
+
+@keyframes glow-pulse{
+  0%,100%{box-shadow:0 0 20px rgba(255,181,46,.3)}
+  50%{box-shadow:0 0 40px rgba(255,181,46,.6)}
+}
+
+@keyframes slide-in-left{
+  from{opacity:0;transform:translateX(-50px)}
+  to{opacity:1;transform:translateX(0)}
+}
+
+@keyframes slide-in-up{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.wrap{
+  width:min(1240px,calc(100% - 40px));
+  margin:auto
+}
+
+/* Header */
+header{
+  position:fixed;
+  z-index:100;
+  top:0;
+  left:0;
+  right:0;
+  background:rgba(10,10,10,.85);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,181,46,.15);
+  box-shadow:0 4px 30px rgba(0,0,0,.3)
+}
+
+nav{
+  height:80px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 20px
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-weight:900;
+  font-size:18px;
+  letter-spacing:-0.5px;
+  animation:slide-in-left .6s ease-out
+}
+
+.logo-icon{
+  width:50px;
+  height:50px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#ffb52e,#e88c0b);
+  border-radius:12px;
+  box-shadow:0 4px 15px rgba(255,181,46,.25);
+  transition:all .3s ease
+}
+
+.logo:hover .logo-icon{
+  transform:scale(1.05);
+  box-shadow:0 6px 25px rgba(255,181,46,.4)
+}
+
+.links{
+  display:flex;
+  gap:35px;
+  font-size:14px;
+  font-weight:600;
+  color:#bbb;
+  animation:slide-in-left .8s ease-out
+}
+
+.links a{
+  position:relative;
+  transition:color .3s ease;
+  padding-bottom:8px
+}
+
+.links a:before{
+  content:'';
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:0;
+  height:2px;
+  background:linear-gradient(90deg,#ffb52e,#e88c0b);
+  transition:width .3s ease
+}
+
+.links a:hover{
+  color:#ffb52e
+}
+
+.links a:hover:before{
+  width:100%
+}
+
+/* Hero Section */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(135deg,#0a0a0a 0%,#1a0a2e 30%,#0f0f2e 70%,#0a0a0a 100%);
+  background-size:200% 200%;
+  animation:gradient-shift 8s ease infinite;
+  padding-top:80px
+}
+
+.hero:before{
+  content:'';
+  position:absolute;
+  width:800px;
+  height:800px;
+  background:radial-gradient(circle,rgba(255,181,46,.15),transparent);
+  border-radius:50%;
+  top:-200px;
+  right:-300px;
+  animation:float 6s ease-in-out infinite
+}
+
+.hero:after{
+  content:'';
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:280px;
+  background:linear-gradient(transparent,#0a0a0a)
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  max-width:780px;
+  animation:slide-in-up 1s ease-out
+}
+
+.tag{
+  display:inline-block;
+  border:2px solid rgba(255,181,46,.4);
+  background:rgba(255,181,46,.1);
+  padding:10px 16px;
+  border-radius:30px;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:1.5px;
+  color:#ffb52e;
+  text-transform:uppercase;
+  margin-bottom:20px;
+  animation:glow-pulse 3s ease-in-out infinite
+}
+
+h1{
+  font-size:clamp(48px,10vw,100px);
+  line-height:.95;
+  margin:24px 0;
+  letter-spacing:-3px;
+  font-weight:900;
+  background:linear-gradient(135deg,#fff,#ffb52e);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text
+}
+
+h1 span{
+  color:#ffb52e
+}
+
+.hero p{
+  font-size:18px;
+  color:#ccc;
+  line-height:1.75;
+  max-width:680px;
+  margin-bottom:30px;
+  font-weight:300
+}
+
+.buttons{
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+  margin-top:32px;
+  animation:slide-in-up 1.2s ease-out
+}
+
+.btn{
+  padding:16px 32px;
+  border-radius:12px;
+  font-weight:800;
+  display:inline-block;
+  font-size:15px;
+  letter-spacing:.5px;
+  transition:all .3s ease;
+  cursor:pointer;
+  border:none;
+  text-transform:uppercase;
+  position:relative;
+  overflow:hidden
+}
+
+.btn:before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:rgba(255,255,255,.2);
+  transition:left .3s ease
+}
+
+.btn:hover:before{
+  left:100%
+}
+
+.gold{
+  background:linear-gradient(135deg,#ffd36a,#e88c0b);
+  color:#000;
+  box-shadow:0 8px 25px rgba(255,181,46,.3);
+  font-weight:900
+}
+
+.gold:hover{
+  box-shadow:0 12px 40px rgba(255,181,46,.5);
+  transform:translateY(-3px)
+}
+
+.dark{
+  border:2px solid rgba(255,181,46,.3);
+  background:rgba(255,181,46,.05);
+  color:#ffb52e;
+  backdrop-filter:blur(10px)
+}
+
+.dark:hover{
+  background:rgba(255,181,46,.15);
+  border-color:rgba(255,181,46,.6);
+  box-shadow:0 8px 25px rgba(255,181,46,.2)
+}
+
+.stats{
+  display:flex;
+  gap:50px;
+  margin-top:60px;
+  padding-top:40px;
+  border-top:1px solid rgba(255,181,46,.15)
+}
+
+.stat{
+  display:flex;
+  flex-direction:column
+}
+
+.stat strong{
+  font-size:32px;
+  color:#ffb52e;
+  margin-bottom:8px
+}
+
+.stat small{
+  color:#999;
+  font-size:13px;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+  font-weight:600
+}
+
+/* Sections */
+section{
+  padding:120px 0;
+  position:relative
+}
+
+section:nth-child(even){
+  background:rgba(255,181,46,.02)
+}
+
+.eyebrow{
+  color:#ffb52e;
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  margin-bottom:12px;
+  display:inline-block
+}
+
+.section-title{
+  font-size:clamp(36px,6vw,52px);
+  margin:16px 0 50px;
+  line-height:1.2;
+  font-weight:900;
+  color:#fff
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:28px;
+  margin-top:50px
+}
+
+.card{
+  background:rgba(255,181,46,.05);
+  border:1px solid rgba(255,181,46,.15);
+  border-radius:16px;
+  padding:36px 28px;
+  transition:all .4s cubic-bezier(.4,.0,.2,1);
+  position:relative;
+  overflow:hidden
+}
+
+.card:before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,181,46,.1),transparent);
+  transition:left .6s ease
+}
+
+.card:hover:before{
+  left:100%
+}
+
+.card:hover{
+  background:rgba(255,181,46,.12);
+  border-color:rgba(255,181,46,.35);
+  transform:translateY(-8px);
+  box-shadow:0 20px 40px rgba(255,181,46,.15)
+}
+
+.card .icon{
+  font-size:48px;
+  margin-bottom:16px;
+  display:block
+}
+
+.card h3{
+  font-size:22px;
+  margin:16px 0 12px;
+  color:#fff;
+  font-weight:800
+}
+
+.card p{
+  color:#bbb;
+  line-height:1.6;
+  font-size:15px;
+  font-weight:300
+}
+
+/* News Section */
+.news{
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:28px;
+  margin-top:50px
+}
+
+.news-card{
+  background:rgba(255,181,46,.05);
+  border:1px solid rgba(255,181,46,.15);
+  border-radius:16px;
+  padding:32px;
+  transition:all .4s ease;
+  position:relative;
+  overflow:hidden
+}
+
+.news-card:hover{
+  background:rgba(255,181,46,.12);
+  border-color:rgba(255,181,46,.35);
+  transform:translateY(-8px);
+  box-shadow:0 20px 40px rgba(255,181,46,.15)
+}
+
+.news-card:first-child{
+  min-height:280px
+}
+
+.news-card .date{
+  color:#ffb52e;
+  font-size:12px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  display:inline-block;
+  margin-bottom:12px;
+  padding:6px 12px;
+  background:rgba(255,181,46,.1);
+  border-radius:20px
+}
+
+.news-card h3{
+  font-size:22px;
+  margin:16px 0 12px;
+  color:#fff;
+  font-weight:800;
+  line-height:1.3
+}
+
+.news-card p{
+  color:#bbb;
+  line-height:1.6;
+  font-size:14px
+}
+
+/* Banner */
+.banner{
+  border:2px solid rgba(255,181,46,.25);
+  border-radius:20px;
+  padding:48px;
+  background:linear-gradient(135deg,rgba(255,181,46,.12),rgba(232,140,11,.08));
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:40px;
+  overflow:hidden;
+  position:relative;
+  backdrop-filter:blur(10px)
+}
+
+.banner:before{
+  content:'';
+  position:absolute;
+  width:400px;
+  height:400px;
+  background:radial-gradient(circle,rgba(255,181,46,.1),transparent);
+  border-radius:50%;
+  bottom:-100px;
+  right:-100px
+}
+
+.banner-content{
+  position:relative;
+  z-index:2;
+  flex:1
+}
+
+.banner .section-title{
+  margin-bottom:12px
+}
+
+.banner p{
+  color:#999;
+  font-size:15px;
+  margin-bottom:0
+}
+
+/* Footer */
+footer{
+  border-top:1px solid rgba(255,181,46,.15);
+  padding:48px 0;
+  color:#888;
+  background:rgba(0,0,0,.5)
+}
+
+footer-content{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:24px
+}
+
+footer span{
+  color:#ffb52e;
+  font-weight:700
+}
+
+.footer-links{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap
+}
+
+.footer-link{
+  padding:10px 18px;
+  border:1px solid rgba(255,181,46,.2);
+  border-radius:10px;
+  font-weight:700;
+  font-size:13px;
+  transition:all .3s ease;
+  display:inline-flex;
+  align-items:center;
+  gap:6px
+}
+
+.footer-link:hover{
+  border-color:rgba(255,181,46,.5);
+  background:rgba(255,181,46,.1);
+  color:#ffb52e
+}
+
+/* Responsive */
+@media(max-width:900px){
+  .links{display:none}
+  .banner{flex-direction:column;text-align:center}
+  .stats{gap:30px}
+  .news{grid-template-columns:1fr}
+  .news-card:first-child{min-height:auto}
+}
+
+@media(max-width:600px){
+  .hero-content{padding-top:30px}
+  h1{letter-spacing:-1px}
+  .buttons{flex-direction:column}
+  .btn{width:100%}
+  .stats{flex-direction:column;gap:20px}
+  section{padding:70px 0}
+  .grid{gap:16px}
+  .card{padding:24px 20px}
+}
 </style>
-<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
-<link rel="apple-touch-icon" href="assets/logo.svg">
-<link rel="shortcut icon" href="assets/logo.svg">
 </head>
 <body>
-<header><nav class="wrap">
-<a class="logo" href="#home"><img src="assets/logo.svg" alt="KENT MOBILE logo"><b>KENT MOBILE</b></a>
-<div class="links"><a href="#about">О проекте</a><a href="#features">Возможности</a><a href="#news">Новости</a><a href="#rules">Правила</a><a href="#download">Скачать</a></div>
-</nav></header>
+
+<!-- Header -->
+<header>
+  <nav class="wrap">
+    <a class="logo" href="#home">
+      <div class="logo-icon">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
+          <!-- Встроенный SVG логотип -->
+          <defs>
+            <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#000;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#1a0a2e;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <!-- Фон -->
+          <circle cx="100" cy="100" r="95" fill="url(#logoGrad)" stroke="#ffb52e" stroke-width="2"/>
+          <!-- Буква K -->
+          <g fill="#ffb52e">
+            <path d="M 60 60 L 60 140 L 75 140 L 75 105 L 100 140 L 120 140 L 90 105 L 120 60 L 100 60 L 75 90 L 75 60 Z"/>
+          </g>
+        </svg>
+      </div>
+      <b>KENT</b>
+    </a>
+    <div class="links">
+      <a href="#about">О проекте</a>
+      <a href="#features">Возможности</a>
+      <a href="#news">Новости</a>
+      <a href="#rules">Правила</a>
+      <a href="#download">Скачать</a>
+    </div>
+  </nav>
+</header>
 
 <main>
-<section class="hero" id="home"><div class="wrap hero-content">
-<div class="tag">МОБИЛЬНЫЙ ROLEPLAY ПРОЕКТ</div>
-<h1>KENT <span>MOBILE</span></h1>
-<p>Большой мобильный мир, где ты сам выбираешь путь своего персонажа. Работа, автомобили, организации, общение и приключения — всё в одном городе.</p>
-<div class="buttons"><a class="btn gold" href="#download">НАЧАТЬ ИГРА��Ь</a><a class="btn dark" href="#about">УЗНАТЬ БОЛЬШЕ</a></div>
-<div class="stats"><div><strong>24/7</strong><small>Игровой мир</small></div><div><strong>RP</strong><small>Свободная игра</small></div><div><strong>Mobile</strong><small>На телефоне</small></div></div>
-</div></section>
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="wrap hero-content">
+      <div class="tag">🎮 Мобильный Roleplay Проект</div>
+      <h1>KENT <span>MOBILE</span></h1>
+      <p>Большой мобильный мир, где ты сам выбираешь путь своего персонажа. Работай, собирай автомобили, создавай организации и живи полноценной жизнью в городе.</p>
+      <div class="buttons">
+        <a class="btn gold" href="#download">🚀 НАЧАТЬ ИГРУ</a>
+        <a class="btn dark" href="#about">📖 УЗНАТЬ БОЛЬШЕ</a>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <strong>24/7</strong>
+          <small>Игровой мир</small>
+        </div>
+        <div class="stat">
+          <strong>RP</strong>
+          <small>Свободная игра</small>
+        </div>
+        <div class="stat">
+          <strong>Mobile</strong>
+          <small>На Android</small>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section id="about"><div class="wrap">
-<div class="eyebrow">KENT MOBILE</div><h2 class="title">Добро пожаловать в свой город</h2>
-<div class="grid">
-<div class="card"><div class="icon">🌆</div><h3>Открытый мир</h3><p>Исследуй город, находи новые места и создавай собственные маршруты.</p></div>
-<div class="card"><div class="icon">🎭</div><h3>RolePlay</h3><p>Создай персонажа, общайся с игроками и участвуя в игровых ситуациях.</p></div>
-<div class="card"><div class="icon">🚘</div><h3>Автомобили</h3><p>Выбирай транспорт, развивай свой гараж и отправляйся навстречу приключениям.</p></div>
-</div></div></section>
+  <!-- About Section -->
+  <section id="about">
+    <div class="wrap">
+      <div class="eyebrow">🌟 KENT MOBILE</div>
+      <h2 class="section-title">Добро пожаловать в свой город</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="icon">🌆</div>
+          <h3>Открытый мир</h3>
+          <p>Исследуй город, находи новые места, скрытые секреты и создавай собственные маршруты для путешествий.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🎭</div>
+          <h3>RolePlay</h3>
+          <p>Создай персонажа, общайся с другими игроками и участвуй в жизни города с собственной историей.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🚘</div>
+          <h3>Автомобили</h3>
+          <p>Выбирай транспорт, развивай свой гараж и отправляйся навстречу приключениям на дорогах города.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section id="features"><div class="wrap">
-<div class="eyebrow">ВОЗМОЖНОСТИ</div><h2 class="title">Здесь всегда есть чем заняться</h2>
-<div class="grid">
-<div class="card"><div class="icon">💼</div><h3>Работа</h3><p>Зарабатывай деньги и развивай своего персонажа.</p></div>
-<div class="card"><div class="icon">🏢</div><h3>Организации</h3><p>Вступай в организации и участвуй в жизни города.</p></div>
-<div class="card"><div class="icon">🏠</div><h3>Имущество</h3><p>Развивай свою коллекцию имущества и автомобилей.</p></div>
-</div></div></section>
+  <!-- Features Section -->
+  <section id="features">
+    <div class="wrap">
+      <div class="eyebrow">⚡ ВОЗМОЖНОСТИ</div>
+      <h2 class="section-title">Здесь всегда есть чем заняться</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="icon">💼</div>
+          <h3>Работа</h3>
+          <p>Зарабатывай деньги на различных профессиях, развивай навыки и карьеру своего персонажа.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🏢</div>
+          <h3>Организации</h3>
+          <p>Вступай в организации, участвуй в их развитии и влияй на жизнь города вместе с командой.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🏠</div>
+          <h3>Имущество</h3>
+          <p>Развивай коллекцию домов, квартир и автомобилей, создавай империю и инвестируй в будущее.</p>
+        </div>
+        <div class="card">
+          <div class="icon">👥</div>
+          <h3>Общение</h3>
+          <p>Находи друзей, создавай команды и строй отношения, которые будут длиться долго.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🎖️</div>
+          <h3>Достижения</h3>
+          <p>Разблокируй разнообразные достижения, получай награды и покажи свой прогресс городу.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🔐</div>
+          <h3>Безопасность</h3>
+          <p>Играй в безопасной среде с опытной администрацией и честной системой для всех игроков.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section id="news"><div class="wrap">
-<div class="eyebrow">НОВОСТИ</div><h2 class="title">Последние события</h2>
-<div class="news">
-<div class="card"><div class="date">02.10.2026</div><h3>Разработка KENT MOBILE продолжается</h3><p>Официальный сайт проекта готовится к запуску, а визуальная часть обновляется под единый стиль бренда.</p></div>
-<div class="card"><div class="date">СКОРО</div><h3>Новые обновления</h3><p>Следи за новостями проекта.</p></div>
-</div></div></section>
+  <!-- News Section -->
+  <section id="news">
+    <div class="wrap">
+      <div class="eyebrow">📰 НОВОСТИ</div>
+      <h2 class="section-title">Последние события</h2>
+      <div class="news">
+        <div class="news-card">
+          <div class="date">03.10.2026</div>
+          <h3>Запуск официального сайта KENT MOBILE</h3>
+          <p>Официальный сайт проекта готовится к запуску! Здесь вы найдёте всю информацию о проекте, новости разработки, обновления и возможность скачать клиент игры для Android.</p>
+        </div>
+        <div class="news-card">
+          <div class="date">Скоро</div>
+          <h3>Новые обновления</h3>
+          <p>Следи за новостями проекта и получай самую свежую информацию о добавлении новых функций и контента.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section id="rules"><div class="wrap">
-<div class="eyebrow">ПРАВИЛА</div><h2 class="title">Основы проекта</h2>
-<div class="grid">
-<div class="card"><h3>01. Уважение</h3><p>Уважай других игроков и администрацию.</p></div>
-<div class="card"><h3>02. RP</h3><p>Соблюдай ролевую логику игровых ситуаций.</p></div>
-<div class="card"><h3>03. Честная игра</h3><p>Не используй запрещённые программы и баги для преимущества.</p></div>
-</div></div></section>
+  <!-- Rules Section -->
+  <section id="rules">
+    <div class="wrap">
+      <div class="eyebrow">📋 ПРАВИЛА</div>
+      <h2 class="section-title">Основы проекта</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>01. Уважение</h3>
+          <p>Уважай других игроков и администрацию. Создавай позитивную и дружелюбную атмосферу в городе.</p>
+        </div>
+        <div class="card">
+          <h3>02. RP Логика</h3>
+          <p>Соблюдай ролевую логику игровых ситуаций. Не нарушай мир игры своими действиями.</p>
+        </div>
+        <div class="card">
+          <h3>03. Честная игра</h3>
+          <p>Не используй запрещённые программы и баги для преимущества. Играй честно и справедливо.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section id="download"><div class="wrap"><div class="banner">
-<div><div class="eyebrow">KENT MOBILE</div><h2 class="title" style="margin-bottom:8px">Готов начать?</h2><div style="color:#999">Скачай клиент игры для Android и начинай свой путь в городе.</div>
-</div><a class="btn gold" href="kent-mobile.apk" download>Скачать</a>
-</div></div></section>
+  <!-- Download Section -->
+  <section id="download">
+    <div class="wrap">
+      <div class="banner">
+        <div class="banner-content">
+          <div class="eyebrow">🎮 ГОТОВ НАЧАТЬ?</div>
+          <h2 class="section-title" style="margin-bottom:12px">Присоединяйся к KENT MOBILE</h2>
+          <p>Скачай клиент игры для Android и начни свою историю в виртуальном городе. Тебя ждут приключения!</p>
+        </div>
+        <a class="btn gold" href="kent-mobile.apk" download>⬇️ Скачать APK</a>
+      </div>
+    </div>
+  </section>
 </main>
 
-<footer><div class="wrap" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px">
-<div>© <span>2026 KENT MOBILE</span> — официальный сайт проекта.</div>
-<div style="display:flex;gap:12px">
-<a href="https://kent-mobile-forum.samp.date" target="_blank" rel="noopener" style="padding:10px 18px;border:1px solid #333;border-radius:8px;font-weight:700;font-size:13px">💬 Форум</a>
-<a href="https://vk.ru/kentmobile1" target="_blank" rel="noopener" style="padding:10px 18px;border:1px solid #333;border-radius:8px;font-weight:700;font-size:13px">👥 ВКонтакте</a>
-</div>
-</div></footer>
-</body></html>
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px">
+      <div>© <span>2026 KENT MOBILE</span> — официальный сайт проекта. Все права защищены.</div>
+      <div class="footer-links">
+        <a href="https://kent-mobile-forum.samp.date" target="_blank" rel="noopener" class="footer-link">💬 Форум</a>
+        <a href="https://vk.ru/kentmobile1" target="_blank" rel="noopener" class="footer-link">👥 ВКонтакте</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
