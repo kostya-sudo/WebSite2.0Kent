@@ -749,6 +749,12 @@ section:nth-child(even){
   letter-spacing:.5px
 }
 
+.download-badge.soon{
+  background:rgba(255,152,0,.2);
+  border-color:rgba(255,152,0,.5);
+  color:#ff9800
+}
+
 .download-card .btn{
   width:100%;
   text-align:center;
@@ -917,7 +923,7 @@ footer span{
       <a href="#screenshots">Скриншоты</a>
       <a href="#getting-started">Начать</a>
       <a href="#faq">FAQ</a>
-      <a href="#download-section">Скачать</a>
+      <a href="#community-links">Ссылки</a>
     </div>
   </nav>
 </header>
@@ -1085,27 +1091,18 @@ footer span{
           <h3>Стабильная версия</h3>
           <div class="download-version">v2.5.1</div>
           <div class="download-size">Размер: 285 МБ</div>
-          <div class="download-badge">✓ Безопасно</div>
+          <div class="download-badge">✓ Готово</div>
           <p style="color:#bbb;font-size:14px;margin-bottom:16px;line-height:1.6">Последняя стабильная версия с полной поддержкой всех функций. Рекомендуется для всех игроков.</p>
           <a href="kent-mobile-v2.5.1.apk" class="btn gold" download>⬇️ Скачать APK</a>
         </div>
         <div class="download-card">
           <div class="download-icon">🆕</div>
-          <h3>Бета версия</h3>
-          <div class="download-version">v2.6 Beta</div>
-          <div class="download-size">Размер: 298 МБ</div>
-          <div class="download-badge" style="background:rgba(255,152,0,.2);border-color:rgba(255,152,0,.5);color:#ff9800">⚡ Новое</div>
-          <p style="color:#bbb;font-size:14px;margin-bottom:16px;line-height:1.6">Попробуй новые возможности раньше всех. Могут встречаться небольшие баги.</p>
-          <a href="kent-mobile-v2.6-beta.apk" class="btn dark" download>⬇️ Скачать Beta</a>
-        </div>
-        <div class="download-card">
-          <div class="download-icon">⚙️</div>
-          <h3>Для ПК (Эмулятор)</h3>
-          <div class="download-version">v2.5.1</div>
-          <div class="download-size">Размер: 520 МБ</div>
-          <div class="download-badge">💻 Desktop</div>
-          <p style="color:#bbb;font-size:14px;margin-bottom:16px;line-height:1.6">Версия для эмулятора на компьютере. Используй BlueStacks или NOX App Player.</p>
-          <a href="kent-mobile-v2.5.1-pc.exe" class="btn dark" download>⬇️ Скачать для ПК</a>
+          <h3>Новые версии</h3>
+          <div class="download-version">В разработке</div>
+          <div class="download-size">Скоро доступны</div>
+          <div class="download-badge soon">⏰ Скоро</div>
+          <p style="color:#bbb;font-size:14px;margin-bottom:16px;line-height:1.6">Следи за новостями проекта! Скоро будут доступны обновления с новыми функциями и улучшениями.</p>
+          <button class="btn dark" disabled style="opacity:.6">Ожидайте</button>
         </div>
       </div>
     </div>
@@ -1150,7 +1147,7 @@ footer span{
             <span class="faq-toggle">⌄</span>
           </div>
           <div class="faq-answer">
-            <p>Да! Discord сервер KENT MOBILE уже открыт для игроков. Там можно найти помощь администрации, участвовать в событиях и общаться с сообществом. Ссылка во вкладке "Сообщество".</p>
+            <p>Да! Discord сервер KENT MOBILE уже открыт для игроков. Там можно найти помощь администрации, участвовать в событиях и общаться с сообществом. Ссылка во вкладке "Ссылки".</p>
           </div>
         </div>
         <div class="faq-item">
@@ -1170,6 +1167,38 @@ footer span{
           <div class="faq-answer">
             <p>Свяжись с нами несколькими способами: через форум (kent-mobile-forum.samp.date), группу ВКонтакте (vk.ru/kentmobile1) или Discord. Администрация ответит в течение 24 часов.</p>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community Links Section -->
+  <section id="community-links">
+    <div class="wrap">
+      <div class="eyebrow">🔗 СООБЩЕСТВО И ССЫЛКИ</div>
+      <h2 class="section-title">Присоединяйся к нам</h2>
+      <p style="color:#bbb;font-size:16px;margin-bottom:50px;max-width:600px">Найти команду, получать последние новости и общаться с другими игроками — легко и удобно.</p>
+      <div class="links-grid">
+        <div class="link-card">
+          <div class="icon">💬</div>
+          <h3>Форум</h3>
+          <div class="status">Активно</div>
+          <p>Полнофункциональный форум проекта для обсуждения, вопросов и обмена опытом с сообществом.</p>
+          <a href="https://kent-mobile-forum.samp.date" target="_blank" rel="noopener" class="btn dark">Перейти на форум</a>
+        </div>
+        <div class="link-card">
+          <div class="icon">👥</div>
+          <h3>ВКонтакте</h3>
+          <div class="status">Активно</div>
+          <p>Официальное сообщество в ВКонтакте с новостями, событиями и общением с администрацией.</p>
+          <a href="https://vk.ru/kentmobile1" target="_blank" rel="noopener" class="btn dark">Перейти в группу</a>
+        </div>
+        <div class="link-card">
+          <div class="icon">🎮</div>
+          <h3>Discord</h3>
+          <div class="status">Активно</div>
+          <p>Официальный Discord сервер проекта для общения, помощи и организации совместных событий с сообществом.</p>
+          <a href="https://discord.gg/kentmobile" target="_blank" rel="noopener" class="btn dark">Перейти на Discord</a>
         </div>
       </div>
     </div>
@@ -1216,38 +1245,6 @@ footer span{
       </div>
     </div>
   </section>
-
-  <!-- Links Section -->
-  <section id="links">
-    <div class="wrap">
-      <div class="eyebrow">🔗 СООБЩЕСТВО</div>
-      <h2 class="section-title">Присоединяйся к нам</h2>
-      <p style="color:#bbb;font-size:16px;margin-bottom:50px;max-width:600px">Найти команду, получать последние новости и общаться с другими игроками — легко и удобно.</p>
-      <div class="links-grid">
-        <div class="link-card">
-          <div class="icon">💬</div>
-          <h3>Форум</h3>
-          <div class="status">Активно</div>
-          <p>Полнофункциональный форум проекта для обсуждения, вопросов и обмена опытом с сообществом.</p>
-          <a href="https://kent-mobile-forum.samp.date" target="_blank" rel="noopener" class="btn dark">Перейти на форум</a>
-        </div>
-        <div class="link-card">
-          <div class="icon">👥</div>
-          <h3>ВКонтакте</h3>
-          <div class="status">Активно</div>
-          <p>Официальное сообщество в ВКонтакте с новостями, событиями и общением с администрацией.</p>
-          <a href="https://vk.ru/kentmobile1" target="_blank" rel="noopener" class="btn dark">Перейти в группу</a>
-        </div>
-        <div class="link-card disabled">
-          <div class="icon">🎮</div>
-          <h3>Discord</h3>
-          <div class="status">В разработке</div>
-          <p>Скоро откроется Discord сервер проекта. Следи за новостями, чтобы не пропустить запуск!</p>
-          <button class="btn dark" disabled style="opacity:.6">Скоро</button>
-        </div>
-      </div>
-    </div>
-  </section>
 </main>
 
 <!-- Footer -->
@@ -1258,6 +1255,7 @@ footer span{
       <div class="footer-links">
         <a href="https://kent-mobile-forum.samp.date" target="_blank" rel="noopener" class="footer-link">💬 Форум</a>
         <a href="https://vk.ru/kentmobile1" target="_blank" rel="noopener" class="footer-link">👥 ВКонтакте</a>
+        <a href="https://discord.gg/kentmobile" target="_blank" rel="noopener" class="footer-link">🎮 Discord</a>
       </div>
     </div>
   </div>
